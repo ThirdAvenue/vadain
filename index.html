@@ -49,6 +49,7 @@
     </div>
 
     <div class="button-container">
+        <img src="path/to/your/image1.png" class="image-button" onclick="sendMessageToIframe('1')"">
       
     </div>
 </div>
@@ -66,10 +67,11 @@
     }
     function sendMessageToIframe(message) {
         const iframe = document.getElementById('productIframe');
-        const targetOrigin = 'https://boilerplate3d.web.app/?productID=62345'; // The origin of the iframe, for security
+        const targetOrigin = '*'; // The origin of the iframe, for security
 
         // Send the message to the iframe window
         iframe.contentWindow.postMessage(message, targetOrigin);
+        console.log(message)
     }
     // Adjust iframe on load and window resize
     window.onload = adjustIframe;
