@@ -49,10 +49,8 @@
     </div>
 
     <div class="button-container">
-        <img src="path/to/your/image1.png" class="image-button" onclick="updateDatabase('value1')">
-        <img src="path/to/your/image2.png" class="image-button" onclick="updateDatabase('value2')">
-        <img src="path/to/your/image3.png" class="image-button" onclick="updateDatabase('value3')">
-        <img src="path/to/your/image4.png" class="image-button" onclick="updateDatabase('value4')">
+        <img src="path/to/your/image1.png" class="image-button" onclick="sendMessageToIframe('1')"">
+      
     </div>
 </div>
 
@@ -67,7 +65,13 @@
         iframe.style.width = `${calculatedWidth}px`; // Set the calculated width
         iframe.style.height = `${availableHeight}px`; // Adjust the height to available space
     }
+    function sendMessageToIframe(message) {
+        const iframe = document.getElementById('productIframe');
+        const targetOrigin = 'https://boilerplate3d.web.app/?productID=62345'; // The origin of the iframe, for security
 
+        // Send the message to the iframe window
+        iframe.contentWindow.postMessage(message, targetOrigin);
+    }
     // Adjust iframe on load and window resize
     window.onload = adjustIframe;
     window.onresize = adjustIframe;
