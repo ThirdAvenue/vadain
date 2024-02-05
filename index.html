@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .iframe-container {
+            flex-grow: 1; /* Allows the iframe container to grow and fill available space */
+            display: flex;
+            justify-content: center; /* Center iframe horizontally */
+            overflow: hidden; /* Hide overflow */
+        }
+        iframe {
+            height: 100%;
+            /* Width will be set by JavaScript to maintain aspect ratio */
+        }
+        .button-container {
+            flex-shrink: 0; /* Prevents the button container from shrinking */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0; /* Add some padding around buttons */
+        }
+        .image-button {
+            cursor: pointer;
+            width: 80px; /* Adjust as needed */
+            height: 80px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div class="iframe-container">
+        <iframe id="productIframe" src="http://localhost:8080/?productID=62345" frameborder="0"></iframe>
+    </div>
+
+    <div class="button-container">
+        <img src="path/to/your/image1.png" class="image-button" onclick="updateDatabase('value1')">
+        <img src="path/to/your/image2.png" class="image-button" onclick="updateDatabase('value2')">
+        <img src="path/to/your/image3.png" class="image-button" onclick="updateDatabase('value3')">
+        <img src="path/to/your/image4.png" class="image-button" onclick="updateDatabase('value4')">
+    </div>
+</div>
+
+<script>
+    function adjustIframe() {
+        const iframe = document.getElementById('productIframe');
+        const container = document.querySelector('.content');
+        const buttons = document.querySelector('.button-container');
+        const availableHeight = container.offsetHeight - buttons.offsetHeight; // Calculate available height for iframe
+        const aspectRatio = 10 / 8; // Maintain this aspect ratio
+        const calculatedWidth = availableHeight * aspectRatio; // Calculate width based on height
+        iframe.style.width = `${calculatedWidth}px`; // Set the calculated width
+        iframe.style.height = `${availableHeight}px`; // Adjust the height to available space
+    }
+
+    // Adjust iframe on load and window resize
+    window.onload = adjustIframe;
+    window.onresize = adjustIframe;
+</script>
+
+</body>
+</html>
