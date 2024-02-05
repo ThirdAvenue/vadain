@@ -30,14 +30,15 @@
         .button-container {
             flex-shrink: 0; /* Prevents the button container from shrinking */
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
             padding: 10px 0; /* Add some padding around buttons */
+            border-radius: 10px; /* Add some rounding to the button container */
         }
         .image-button {
             cursor: pointer;
-            width: 120px; /* Adjust as needed */
-            height: 120px; /* Adjust as needed */
+            width: 80x; /* Adjust as needed */
+            height: 80px; /* Adjust as needed */
         }
     </style>
 </head>
@@ -46,10 +47,12 @@
 <div class="content">
     <div class="iframe-container">
         <iframe id="productIframe" src="https://boilerplate3d.web.app/?productID=62345" frameborder="0"></iframe>
+    
     </div>
 
     <div class="button-container">
-        <img src="button1.jpg" class="image-button" onclick="sendMessageToIframe('1')"">
+        <img src="button1.jpg" class="image-button" onclick="sendMessageToIframe('1')">
+        <img src="button2.jpg" class="image-button" onclick="sendMessageToIframe('2')">
       
     </div>
 </div>
